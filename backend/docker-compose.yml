@@ -2,8 +2,8 @@ version: "3"
 
 services:
   backend:
-    container_name: nextjs-hasura-boilerplate-backend
-    image: nextjs-hasura-boilerplate-backend
+    container_name: neofelis-backend
+    image: neofelis-backend
     build:
       context: .
     depends_on:
@@ -16,7 +16,7 @@ services:
       - "8080:8080"
 
   db:
-    container_name: nextjs-hasura-boilerplate-db
+    container_name: neofelis-db
     image: postgres:latest
     ports:
       - "5432:5432"
