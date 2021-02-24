@@ -1,28 +1,20 @@
 version: "3"
 
+networks:
+  neofelis:
+
 services:
   backend:
+    networks:
+      - neofelis
     container_name: neofelis-backend
     image: neofelis-backend
+    restart: always
     build:
       context: .
-    depends_on:
-      - db
     env_file: ./.env
     volumes:
       - ./migrations:/hasura-migrations
       - ./metadata:/hasura-metadata
     ports:
-      - "8080:8080"
-
-  db:
-    container_name: neofelis-db
-    image: postgres:latest
-    ports:
-      - "5432:5432"
-    volumes:
-      - db_data:/var/lib/postgresql/data
-    env_file: ./.env
-
-volumes:
-  db_data:
+      - "10080:8080"
